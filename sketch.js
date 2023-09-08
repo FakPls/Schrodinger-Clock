@@ -84,7 +84,7 @@ function draw() {
   }
   endShape();
 
-  t += 0.01/(get_E(n1, a) - get_E(n2, a))
+  t += 0.01/(get_E(n1, a) - get_E(n2, a) + 0.01)
   //line(a/2, 0, a/2, height)
 
   if(((get_E(n1, a) - get_E(n2, a))*t/h) >= 2*PI) {
