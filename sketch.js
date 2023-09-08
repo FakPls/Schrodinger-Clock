@@ -7,7 +7,11 @@ let h = 1
 let m = 1
 let t = 0
 let numPoints = 1000
+let Userproperties
 
+function preLoad() {
+  Userproperties = loadJSON('project.json')
+}
 
 function get_E(n) {
   return (n*n)*(PI*PI)*(h*h)/2/m/a
@@ -36,6 +40,7 @@ function makeArr(startValue, stopValue, cardinality) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  a = width
 }
 
 function draw() {
@@ -56,7 +61,15 @@ function draw() {
   let time = new Date()
   n1 = time.getHours()
   n2 = time.getMinutes()
-  display_time = time.getHours() + ':' + time.getMinutes()
+
+  if(n1 >= 13) {
+    n1 = n1 - 12;
+  }
+  else if (n1 == 0) {
+    n1 = 12
+  }
+
+  display_time = n1 + ':' + n2
 
   text(display_time, a/2, -300)
 
@@ -76,7 +89,7 @@ function draw() {
   }
   endShape();
 
-  t += 0.01
+  t += 0.01/(get_E(n1, a) - get_E(n2, a))
   //line(a/2, 0, a/2, height)
 
   if(((get_E(n1, a) - get_E(n2, a))*t/h) >= 2*PI) {
