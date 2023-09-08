@@ -7,11 +7,7 @@ let h = 1
 let m = 1
 let t = 0
 let numPoints = 1000
-let Userproperties
 
-function preLoad() {
-  Userproperties = loadJSON('project.json')
-}
 
 function get_E(n) {
   return (n*n)*(PI*PI)*(h*h)/2/m/a
@@ -40,7 +36,6 @@ function makeArr(startValue, stopValue, cardinality) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  a = width
 }
 
 function draw() {
@@ -69,7 +64,7 @@ function draw() {
     n1 = 12
   }
 
-  display_time = n1 + ':' + n2
+  display_time = n1 + ':' + n2.toString().padStart(2, '0')
 
   text(display_time, a/2, -300)
 
